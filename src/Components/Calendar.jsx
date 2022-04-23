@@ -48,19 +48,27 @@ const Canlendar = (props) => {
       const checkList = listArray.filter(function (item) {
         return item.date === id
       });
-    
+      
       if (checkList.length) {
          checkList.map((item) => {
           return data.push(item.content)
         })
-        const result = data[0].map((element, index) => {
+      //   const result = data[0].map((element, index) => {
+      //    return (
+      //        <li key={index}>
+      //        {element}
+      //        </li>
+      //        )
+      //  });
+      //   return result;
+         console.log(data[0][1])
          return (
-             <li key={index}>
-             {element}
-             </li>
-             )
-       });
-        return result;
+            <ul className="task-menu">
+               <li>{data[0][0]}</li>
+               {data[0][1] ? <li>{data[0][1]}</li> : ''}
+               {data[0][2] ? <li>............</li> : ''}
+            </ul>
+         )
       } else {
         return '';
       }
@@ -75,9 +83,9 @@ const Canlendar = (props) => {
       }
       const result = arrDay.map((item, index) => {
          return (
-            <div onClick={(e) => handleClick(new Date(year,month -1,item).toDateString())} className="border border-dark pt-3 pb-5 prev-date" key={index} type="button">
+            <div onClick={(e) => handleClick(new Date(year,month -1,item).toDateString())} className="height border border-dark pt-3 pb-5 prev-date" key={index} type="button">
                <div>{item}</div>
-               <ul className= "task-menu">{showTasksbyday(new Date(year,month -1,item).toDateString())}</ul>
+               <div>{showTasksbyday(new Date(year,month -1,item).toDateString())}</div>
             </div>
          )
       })
@@ -96,16 +104,16 @@ const Canlendar = (props) => {
       const result = arrDay.map((item, index) => {
          if (item === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear()) {
             return (
-               <div onClick={(e) => handleClick(new Date(year,month,item).toDateString())} className="border-day border border-dark pt-3 pb-5 today" key={index}>
+               <div onClick={(e) => handleClick(new Date(year,month,item).toDateString())} className="height border-day border border-dark pt-3 pb-5 today" key={index}>
                   <div>{item}</div>
-                  <ul className= "task-menu">{showTasksbyday(new Date(year,month,item).toDateString())}</ul>
+                  <div>{showTasksbyday(new Date(year,month,item).toDateString())}</div>
                </div>
             )
          } else {
             return (
-               <div onClick={(e) => handleClick(new Date(year,month,item).toDateString())} className="border-day border border-dark pt-3 pb-5" key={index}>
+               <div onClick={(e) => handleClick(new Date(year,month,item).toDateString())} className="height border-day border border-dark pt-3 pb-5" key={index}>
                   <div>{item}</div>
-                  <ul className= "task-menu">{showTasksbyday(new Date(year,month,item).toDateString())}</ul>
+                  <div>{showTasksbyday(new Date(year,month,item).toDateString())}</div>
                </div>
             )
          }
@@ -127,9 +135,9 @@ const Canlendar = (props) => {
       }
       const result = arrDay.map((item, index) => {
          return (
-            <div onClick={(e) => handleClick(new Date(year,month+1,item).toDateString())} className="border border-dark pt-3 pb-5 next-date" key={index}>
+            <div onClick={(e) => handleClick(new Date(year,month+1,item).toDateString())} className="height border border-dark pt-3 pb-5 next-date" key={index}>
                <div>{item}</div>
-               <ul className= "task-menu">{showTasksbyday(new Date(year,month+1,item).toDateString())}</ul>
+               <div>{showTasksbyday(new Date(year,month+1,item).toDateString())}</div>
             </div>
          )
       })
@@ -143,11 +151,6 @@ const Canlendar = (props) => {
       <div className="calendar">
          <div className="header align-items-center">
             <div className="row">
-               <div className="mb-3">
-                  <button onClick={showByYear} className="btn btn-secondary btn-100">Year</button>
-                  &emsp;
-                  <button className="btn btn-secondary btn-100">Month</button>
-               </div>
                <div className="month  d-flex align-items-center justify-content-between">
                   <i onClick={handlePreMonth} className="fas fa-angle-left prev"></i>
                   <div className="date">
@@ -155,6 +158,11 @@ const Canlendar = (props) => {
                      <p onClick={handleBack}>{currentDate}</p>
                   </div>
                   <i onClick={handleNextMonth} className="fas fa-angle-right next"></i>
+               </div>
+               <div className=" d-flex justify-content-end">
+                  <button onClick={showByYear} className="btn btn-secondary btn-100">Year</button>
+                  &emsp;
+                  <button className="btn btn-secondary btn-100">Month</button>
                </div>
             </div>
          </div>

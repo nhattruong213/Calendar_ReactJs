@@ -100,23 +100,27 @@ const CalendarByYear = (props) => {
         return result
     }
     return (
-        <div className="calendarByYear">
-            <div className="d-flex justify-content-center mt-4">
-                <button onClick={props.showByYear} className="btn-100 btn btn-secondary">Month</button>
-                &emsp;
-                <button className="btn-100 btn btn-secondary ml-3">Year</button>
-            </div>
-            <div className="yearNext d-flex align-items-center justify-content-between mt-4">
-                <i onClick={handlePrevYear} className="fas fa-angle-left prevYear"></i>
-                <div className="Year">
-                    <h1 onClick={handleCurrentYear}>{year}</h1>
+        
+            <div className="calendarByYear">
+                <div className="container">
+                    <div className="d-flex justify-content-end mt-4">
+                        <button onClick={props.showByYear} className="btn-color btn btn-secondary">Month</button>
+                        &emsp;
+                        <button className="btn-color btn btn-secondary ml-3">Year</button>
+                    </div>
+                    <div className="yearNext d-flex align-items-center justify-content-between mt-4">
+                        <i onClick={handlePrevYear} className="fas fa-angle-left prevYear"></i>
+                        <div className="Year">
+                            <h1 onClick={handleCurrentYear}>{year}</h1>
+                        </div>
+                        <i onClick={handleNextYear} className="fas fa-angle-right nextYear"></i>
+                    </div>
+                    <div className="grid-calendar">
+                        {showCalendarByYear()}
+                    </div>
                 </div>
-                <i onClick={handleNextYear} className="fas fa-angle-right nextYear"></i>
             </div>
-            <div className="grid-calendar">
-                {showCalendarByYear()}
-            </div>
-        </div>
+     
     )
 }
 export default CalendarByYear
