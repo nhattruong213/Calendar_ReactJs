@@ -105,8 +105,8 @@ const CalendarByYear = (props) => {
                 <div className="container">
                     <div className="d-flex justify-content-end mt-4">
                         <button onClick={props.showByYear} className="btn-color btn btn-secondary">Month</button>
-                        &emsp;
-                        <button className="btn-color btn btn-secondary ml-3">Year</button>
+                        {/* &emsp;
+                        <button className="btn-color btn btn-secondary ml-3">Year</button> */}
                     </div>
                     <div className="yearNext d-flex align-items-center justify-content-between mt-4">
                         <i onClick={handlePrevYear} className="fas fa-angle-left prevYear"></i>

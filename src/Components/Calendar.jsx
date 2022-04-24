@@ -53,15 +53,6 @@ const Canlendar = (props) => {
          checkList.map((item) => {
           return data.push(item.content)
         })
-      //   const result = data[0].map((element, index) => {
-      //    return (
-      //        <li key={index}>
-      //        {element}
-      //        </li>
-      //        )
-      //  });
-      //   return result;
-         console.log(data[0][1])
          return (
             <ul className="task-menu">
                <li>{data[0][0]}</li>
@@ -148,37 +139,39 @@ const Canlendar = (props) => {
    }
 
    return (
-      <div className="calendar">
-         <div className="header align-items-center">
-            <div className="row">
-               <div className="month  d-flex align-items-center justify-content-between">
-                  <i onClick={handlePreMonth} className="fas fa-angle-left prev"></i>
-                  <div className="date">
-                     <h1>{currentMonth}</h1>
-                     <p onClick={handleBack}>{currentDate}</p>
+      <div className="container-body">
+         <div className="calendar">
+            <div className="header align-items-center">
+               <div className="row">
+                  <div className="month  d-flex align-items-center justify-content-between">
+                     <i onClick={handlePreMonth} className="fas fa-angle-left prev"></i>
+                     <div className="date">
+                        <h1>{currentMonth}</h1>
+                        <p onClick={handleBack}>{currentDate}</p>
+                     </div>
+                     <i onClick={handleNextMonth} className="fas fa-angle-right next"></i>
                   </div>
-                  <i onClick={handleNextMonth} className="fas fa-angle-right next"></i>
-               </div>
-               <div className=" d-flex justify-content-end">
-                  <button onClick={showByYear} className="btn btn-secondary btn-100">Year</button>
-                  &emsp;
-                  <button className="btn btn-secondary btn-100">Month</button>
+                  <div className=" d-flex justify-content-end">
+                     <button onClick={showByYear} className="btn btn-secondary btn-100">Year</button>
+                     {/* &emsp;
+                     <button className="btn btn-secondary btn-100">Month</button> */}
+                  </div>
                </div>
             </div>
-         </div>
-         <div className="weekdays align-items-center text-center ">
-            <div className="color-red">Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div className="color-red">Sat</div>
-         </div>
-         <div className="days text-center">
-            {showprevDay()}
-            {showCurrentDay()}
-            {showNextDay()}
+            <div className="weekdays align-items-center text-center ">
+               <div className="color-red">Sun</div>
+               <div>Mon</div>
+               <div>Tue</div>
+               <div>Wed</div>
+               <div>Thu</div>
+               <div>Fri</div>
+               <div className="color-red">Sat</div>
+            </div>
+            <div className="days text-center">
+               {showprevDay()}
+               {showCurrentDay()}
+               {showNextDay()}
+            </div>
          </div>
       </div>
    )
